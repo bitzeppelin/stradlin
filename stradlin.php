@@ -47,6 +47,7 @@ function route($regexp, $methods, $callback) {
   $uri = get_request_uri();
   if (request_method_matches($methods) && preg_match($regexp, $uri, $params)) {
     $callback($params);
+    exit();
   }
 
 }
