@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Stradlin : Severely minimal PHP routing microframework inspired by Sinatra" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Stradlin</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/bitzeppelin/stradlin">View on GitHub</a>
+
+          <h1 id="project_title">Stradlin</h1>
+          <h2 id="project_tagline">Severely minimal PHP routing microframework inspired by Sinatra</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/bitzeppelin/stradlin/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/bitzeppelin/stradlin/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>Stradlin</h1>
+
+<p>Severely minimal PHP routing microframework inspired by Sinatra that is specially useful for prototyping RESTful APIs.</p>
+
+<p>Usage example:</p>
+
+<div class="highlight"><pre>
+<span class="k">require_once</span><span class="p">(</span><span class="s1">'stradlin.php'</span><span class="p">);</span>
+
+<span class="nx">route</span><span class="p">(</span><span class="s1">'/hello/(?P&lt;name&gt;\w+)/?'</span><span class="p">,</span> <span class="nx">all_verbs</span><span class="p">(),</span> <span class="k">function</span><span class="p">(</span><span class="nv">$params</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nv">$name</span> <span class="o">=</span> <span class="nv">$params</span><span class="p">[</span><span class="s1">'name'</span><span class="p">];</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nb">is_numeric</span><span class="p">(</span><span class="nv">$name</span><span class="p">))</span> <span class="p">{</span>
+    <span class="nx">set_status_code</span><span class="p">(</span><span class="mi">400</span><span class="p">);</span> <span class="cm">/* Bad Request */</span>
+    <span class="nv">$doc</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+      <span class="s2">"status"</span> <span class="o">=&gt;</span> <span class="s2">"error"</span><span class="p">,</span>
+      <span class="s2">"errors"</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s2">"Come on! Your name can't be numeric! Are you a clone trooper or what?"</span>
+      <span class="p">)</span>
+    <span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nv">$doc</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+      <span class="s2">"status"</span> <span class="o">=&gt;</span> <span class="s2">"ok"</span><span class="p">,</span>
+      <span class="s2">"data"</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s2">"greeting"</span> <span class="o">=&gt;</span> <span class="s2">"Hello Mr. or Mrs. </span><span class="si">$name</span><span class="s2">!!! Welcome to Stradlin :)"</span>
+      <span class="p">)</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+  <span class="nx">serve_json</span><span class="p">(</span><span class="nv">$doc</span><span class="p">,</span> <span class="nx">JSON_PRETTY_PRINT</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+
+<p>In order to have the clean URLs working please use the provided .htaccess file for Apache and write/include your controllers from index.php or simple adapt it to suit your needs.</p>
+
+<p>Speaking of controllers, this microframework should have been called 'Axl', that's a real control freak! :)</p>
+
+<p>For more information please read the freaking sources and please stay tuned.</p>
+
+<p>(c) 2012 - Bit Zeppelin S.A.C. - Developed by Antonio Ognio a.k.a <a href="https://github.com/gnrfan" class="user-mention">@gnrfan</a></p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Stradlin maintained by <a href="https://github.com/bitzeppelin">bitzeppelin</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
