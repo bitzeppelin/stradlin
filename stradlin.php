@@ -138,4 +138,14 @@ function render_template($template, $context = null, $template_dir='templates') 
   include_template($template, $template_dir);
 }
 
+function phpinfo_to_file($path) {
+  ob_start();
+  phpinfo();
+  $contents = ob_get_contents();
+  ob_end_clean();
+  $fp = @fopen($path, 'w+');
+  @fputs($fp, $contents);
+  @fclose($fp);
+}
+
 ?>
