@@ -1,11 +1,16 @@
 <?php
 
-function serve_json($doc, $options = 0) {
+function serve_json($doc, $options = 0, $cbname = 'callback') {
   set_content_type('application/json');
   $doc = json_encode($doc, $options);
+  $callback = null;
   if (array_key_exists('HTTP_JSONP_CALLBACK', $_SERVER) && strlen($_SERVER['HTTP_JSONP_CALLBACK'])>0) {
     $callback = $_SERVER['HTTP_JSONP_CALLBACK'];
-    printf("%s(\"%s\");\n", $callback, addslashes($doc));
+  } elseif (array_key_exists($cbname, $_REQUEST) && strlen($_REQUEST[$cbname])>0) {
+    $callback = $_REQUEST[$cbname];
+  }
+  if (strlen($callback)>0) {
+    printf("%s(%s);\n", $callback, $doc);
   } else {
     echo $doc;
   }
