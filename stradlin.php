@@ -12,7 +12,13 @@ function serve_json($doc, $options = 0) {
 }
 
 function get_request_uri() {
-  return $_SERVER['REDIRECT_URL'];
+  if (array_key_exists('REDIRECT_URL', $_SERVER)) {
+    return  $_SERVER['REDIRECT_URL'];
+  } elseif (array_key_exists('PATH_INFO', $_SERVER)) {
+    return $_SERVER['PATH_INFO'];
+  } else {
+    return $_SERVER['SCRIPT_NAME'];
+  }
 }
 
 function request_method_matches($methods) {
