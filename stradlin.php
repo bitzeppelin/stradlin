@@ -17,7 +17,7 @@ function get_request_uri() {
   } elseif (array_key_exists('PATH_INFO', $_SERVER)) {
     return $_SERVER['PATH_INFO'];
   } else {
-    return $_SERVER['SCRIPT_NAME'];
+    return '/';
   }
 }
 
