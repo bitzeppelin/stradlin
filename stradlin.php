@@ -114,10 +114,16 @@ function all_verbs() {
   return implode(", ", all_verbs_array());
 }
 
-function render_template($template, $context, $template_dir='templates') {
+function include_template($template, $template_dir='templates') {
   $path = str_replace("//", "/", $template_dir.'/'.$template);
-  extract($context);
   include($path);
+}
+
+function render_template($template, $context = null, $template_dir='templates') {
+  if (!is_null($context)) {
+    extract($context);
+  }
+  include_template($template, $template_dir);
 }
 
 ?>
