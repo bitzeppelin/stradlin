@@ -33,6 +33,10 @@ route('/hello/(?P<name>\w+)/?', all_verbs(), function($params) {
 
 In order to have the clean URLs working please use the provided .htaccess file for Apache and write/include your controllers from index.php or simple adapt it to suit your needs.
 
+<p align="center">
+  <img src="http://i.imgur.com/NwfI5.jpg" alt="Izzy Stradlin' and Axl Rose" />
+</p>
+
 Speaking of controllers, this microframework should have been called 'Axl', that's a real control freak! :)
 
 For more information please read the freaking sources and please stay tuned.
