@@ -17,10 +17,10 @@ function serve_json($doc, $options = 0, $cbname = 'callback') {
 }
 
 function get_request_uri() {
-  if (array_key_exists('REDIRECT_URL', $_SERVER)) {
-    return  $_SERVER['REDIRECT_URL'];
-  } elseif (array_key_exists('PATH_INFO', $_SERVER)) {
-    return $_SERVER['PATH_INFO'];
+  if (array_key_exists('PATH_INFO', $_SERVER)) {
+    return  $_SERVER['PATH_INFO'];
+  } elseif (array_key_exists('REDIRECT_URL', $_SERVER)) {
+    return $_SERVER['REDIRECT_URL'];
   } else {
     return '/';
   }
