@@ -43,7 +43,7 @@ function route($regexp, $methods, $callback) {
   $regexp = sprintf("/%s/", $regexp);
 
   /* Create array of accepted HTTP methods */
-  $methods = split(",", $methods) ;
+  $methods = explode(",", $methods) ;
   foreach($methods as $k=>$v) {
     $methods[$k] = trim(strtoupper($v));
   } 
